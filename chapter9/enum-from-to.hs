@@ -1,11 +1,17 @@
+ordering :: (Eq a, Ord a, Enum a) => a -> a -> [a]
+ordering a b 
+    | b < a     = []
+    | a == b    = [a]
+    | otherwise = a : (ordering (succ a) b)
+
 eftBool :: Bool -> Bool -> [Bool]
-eftBool a b = enumFromTo a b
+eftBool = ordering
 
 eftOrd :: Ordering -> Ordering -> [Ordering]
-eftOrd a b = enumFromTo a b
+eftOrd = ordering
 
 eftInt :: Int -> Int -> [Int]
-eftInt a b = enumFromTo a b
+eftInt = ordering
 
 eftChar :: Char -> Char -> [Char]
-eftChar a b = enumFromTo a b
+eftChar = ordering
